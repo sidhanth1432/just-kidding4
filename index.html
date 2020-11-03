@@ -301,8 +301,8 @@
                 
                 let price = document.createElement('div');
                 price.className = 'price';
-                let cost = new Intl.NumberFormat('en-CA', 
-                                {style: 'currency', currency:'CAD'}).format(item.qty * item.itemPrice);
+             /*   let cost = new Intl.NumberFormat('en-CA', 
+                                {style: 'currency', currency:'CAD'}).format(item.qty * item.itemPrice); */
                 price.textContent = cost;
                 cartitem.appendChild(price);
                 
@@ -316,7 +316,7 @@
             CART.increase(id, 1);
             let controls = ev.target.parentElement;
             let qty = controls.querySelector('span:nth-child(2)');
-            let price = controls.querySelector('div:nth-child(3)');
+            let price = controls.querySelector('div:nth-child(4)');
             let item = CART.find(id);
             if(item){
                 qty.textContent = item.qty;
@@ -333,7 +333,7 @@
             CART.reduce(id, 1);
             let controls = ev.target.parentElement;
             let qty = controls.querySelector('span:nth-child(2)');
-            let price = controls.querySelector('div:nth-child(3)');
+            let price = controls.querySelector('div:nth-child(4)');
             let item = CART.find(id);
             if(item){
                 qty.textContent = item.qty;
