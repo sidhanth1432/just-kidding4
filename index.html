@@ -299,15 +299,29 @@
                 controls.appendChild(minus);
                 minus.addEventListener('click', decrementCart)
                 
-                let price = document.createElement('div');
+            })
+            
+            
+            let s = CART.sort('qty');
+            s.forEach( item =>{
+                let cartitem = document.createElement('div');
+                cartitem.className = 'cart-item';
+                  let price = document.createElement('div');
                 price.className = 'price';
-             /*   let cost = new Intl.NumberFormat('en-CA', 
-                                {style: 'currency', currency:'CAD'}).format(item.qty * item.itemPrice); */
+             let cost = new Intl.NumberFormat('en-CA', 
+                                {style: 'currency', currency:'CAD'}).format(item.qty * item.itemPrice); 
                 price.textContent = cost;
                 cartitem.appendChild(price);
                 
                 cartSection.appendChild(cartitem);
             })
+            
+            
+            
+            
+            
+            
+            
         }
         
         function incrementCart(ev){
@@ -316,12 +330,11 @@
             CART.increase(id, 1);
             let controls = ev.target.parentElement;
             let qty = controls.querySelector('span:nth-child(2)');
-            let price = controls.querySelector('div:nth-child(4)');
+            
             let item = CART.find(id);
             if(item){
                 qty.textContent = item.qty;
-                let cost = new Intl.NumberFormat('en-CA',{style: 'currency', currency:'CAD'}).format(item.qty * item.itemPrice);
-                price.textContent = cost;
+                
             }else{
                 document.getElementById('cart').removeChild(controls.parentElement);
             }
@@ -333,12 +346,11 @@
             CART.reduce(id, 1);
             let controls = ev.target.parentElement;
             let qty = controls.querySelector('span:nth-child(2)');
-            let price = controls.querySelector('div:nth-child(4)');
+            
             let item = CART.find(id);
             if(item){
                 qty.textContent = item.qty;
-                let cost = new Intl.NumberFormat('en-CA',{style: 'currency', currency:'CAD'}).format(item.qty * item.itemPrice);
-                price.textContent = cost;
+                
             }else{
                 document.getElementById('cart').removeChild(controls.parentElement);
             }
